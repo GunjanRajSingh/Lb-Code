@@ -75,5 +75,5 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Terraform Apply
-        run: terraform Apply --auto-approve
+        run: terraform apply --auto-approve
         working-directory: todoapp_infra
