@@ -6,7 +6,7 @@ module "rg" {
 
 module "virtual_network" {
   source = "../modules/azurerm_virtual_network"
-
+  depends_on = [ module.rg ]
   virtual_network_name     = "vnet-lb"
   virtual_network_location = "centralindia"
   resource_group_name      = "Gunjan-Az-rg"
@@ -145,3 +145,4 @@ module "chinki2lb_jod_yojna" {
   bap_name              = "lb-BackEndAddressPool1"
   ip_configuration_name = "internal"
 }
+
