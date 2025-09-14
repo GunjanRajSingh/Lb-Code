@@ -74,6 +74,20 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Install Terraform                        #3. Setup kar liya Terraform ka
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
+      - name: Terraform init azurerm backend
+        uses: ahmedig/terraform-azurerm-backend@v4
+        with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          resource_group_name: gunjan-env-rg
+          container_name: gunjancontainer
+          storage_account_name: unjanenvstg22847
+          tf_working_directory: todoapp_infra
+
       - name: Terraform Apply
         run: terraform apply --auto-approve
         working-directory: todoapp_infra
